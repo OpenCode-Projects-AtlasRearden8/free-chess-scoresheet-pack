@@ -1,0 +1,5 @@
+# Test + build checks only. The PDF build itself needs just Python 3 and
+# WeasyPrint; no network, no accounts.
+pypdf>=6.0
+pytest>=8.0
+python-chess>=1.0

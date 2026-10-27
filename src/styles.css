@@ -1,0 +1,379 @@
+/* Shared print styles for the Free Chess Scoresheet Pack.
+   Targets US Letter (8.5in x 11in) via WeasyPrint.
+   Large-print-friendly: 12pt body text, generous writing space.
+   All PDF output stays unbranded: no names, no logos, no URLs. */
+
+@page {
+  size: letter;
+  margin: 0.55in 0.6in 0.7in 0.6in;
+  @bottom-center {
+    content: counter(page) " of " counter(pages);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 9pt;
+    color: #666;
+  }
+}
+
+/* The scoresheet page needs every bit of height to keep 60 move rows on one page. */
+@page scoresheet {
+  size: letter;
+  margin: 0.5in 0.6in 0.55in 0.6in;
+  @bottom-center {
+    content: counter(page) " of " counter(pages);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 9pt;
+    color: #666;
+  }
+}
+
+.scoresheet-page {
+  page: scoresheet;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Georgia, "Times New Roman", serif;
+  color: #21242b;
+  margin: 0;
+  font-size: 12pt;
+  line-height: 1.5;
+}
+
+h1 {
+  font-size: 24pt;
+  margin: 0 0 0.2em 0;
+  color: #1e2a3a;
+}
+
+h2 {
+  font-size: 15pt;
+  margin: 0 0 0.4em 0;
+  color: #1e2a3a;
+  border-bottom: 1.5pt solid #1e2a3a;
+  padding-bottom: 2pt;
+}
+
+h3 {
+  font-size: 12.5pt;
+  margin: 0.6em 0 0.3em 0;
+  color: #2c3e56;
+}
+
+.subtitle {
+  font-size: 12pt;
+  font-style: italic;
+  color: #535d70;
+  margin: 0 0 0.8em 0;
+}
+
+.page-break {
+  page-break-before: always;
+}
+
+/* ---- Getting-started page ---- */
+.getting-started {
+  page-break-after: always;
+}
+
+.getting-started .intro {
+  font-size: 12pt;
+}
+
+.getting-started ol,
+.getting-started ul {
+  padding-left: 1.3em;
+}
+
+.getting-started li {
+  margin-bottom: 0.5em;
+}
+
+.tip-box {
+  background: #eef1f6;
+  border: 1pt solid #93a5c0;
+  border-radius: 6pt;
+  padding: 8pt 10pt;
+  margin: 0.9em 0;
+  font-size: 11pt;
+}
+
+.tip-box strong {
+  color: #1e2a3a;
+}
+
+.pencils-note {
+  border: 1pt solid #8b7a4e;
+  background: #f7f4e8;
+  border-radius: 6pt;
+  padding: 7pt 10pt;
+  margin: 0.9em 0;
+  font-size: 11pt;
+}
+
+/* ---- Tables (logs, grids, trackers) ---- */
+table.sheet {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.4em;
+}
+
+table.sheet th,
+table.sheet td {
+  border: 0.8pt solid #5c6577;
+  padding: 4pt 6pt;
+  text-align: left;
+  vertical-align: top;
+}
+
+table.sheet th {
+  background: #e3e7ee;
+  font-size: 10.5pt;
+  text-transform: uppercase;
+  letter-spacing: 0.4pt;
+}
+
+	table.sheet td.blank {
+  height: 22pt;
+}
+
+table.sheet td.center,
+table.sheet th.center {
+  text-align: center;
+}
+
+table.sheet td.narrow {
+  width: 0.8in;
+}
+
+/* ---- Fill-in fields ---- */
+.fill-line {
+  display: inline-block;
+  border-bottom: 0.9pt solid #3a3f4a;
+  min-width: 2.2in;
+  height: 1.2em;
+  vertical-align: bottom;
+}
+
+.fill-line.short {
+  min-width: 1.1in;
+}
+
+.fill-line.xs {
+  min-width: 0.55in;
+}
+
+.fill-line.long {
+  min-width: 4.2in;
+}
+
+.field-row {
+  margin: 0.35em 0;
+}
+
+.field-row .label {
+  font-weight: bold;
+  font-size: 11pt;
+  margin-right: 6pt;
+}
+
+/* ---- Reflection / lesson boxes ---- */
+.answer-box {
+  border: 0.9pt solid #5c6577;
+  border-radius: 4pt;
+  min-height: 0.85in;
+  margin: 0.2em 0 0.45em 0;
+}
+
+.answer-box.tall {
+  min-height: 1.8in;
+}
+
+.write-lines p {
+  border-bottom: 0.8pt solid #8a93a6;
+  height: 1.5em;
+  margin: 0 0 0.25em 0;
+}
+
+.tight-lines p {
+  height: 1.3em;
+}
+
+/* ---- Checkboxes ---- */
+.check {
+  width: 13pt;
+  height: 13pt;
+  border: 1pt solid #3a3f4a;
+  display: inline-block;
+  margin-right: 5pt;
+  vertical-align: -2pt;
+}
+
+.choice-row {
+  margin: 0.3em 0;
+}
+
+.choice-row span.item {
+  margin-right: 16pt;
+  white-space: nowrap;
+}
+
+/* ---- Cut-out cards (opening log, clock settings) ---- */
+.cut-card {
+  border: 1.6pt dashed #3a3f4a;
+  border-radius: 6pt;
+  padding: 6pt 12pt;
+  margin-bottom: 9pt;
+  page-break-inside: avoid;
+}
+
+.cut-card .card-title {
+  font-weight: bold;
+  font-size: 13pt;
+  color: #1e2a3a;
+  margin-bottom: 5pt;
+}
+
+.cut-card .card-fields {
+  font-size: 11pt;
+}
+
+.cut-card .card-fields p {
+  margin: 0.35em 0;
+}
+
+.cut-card .write-lines p {
+  height: 1.1em;
+  margin-bottom: 0.1em;
+}
+
+.cut-card .card-fields p {
+  margin: 0.25em 0;
+}
+
+.card-grid {
+  display: table;
+  width: 100%;
+}
+
+.cell {
+  display: table-cell;
+  vertical-align: top;
+}
+
+.cell.left {
+  padding-right: 10pt;
+}
+
+.cell.right {
+  padding-left: 10pt;
+}
+
+/* ---- Chess diagrams (starter drills) ---- */
+.chess-glyph {
+  font-family: "DejaVu Sans", sans-serif;
+}
+
+table.diagram {
+  border-collapse: collapse;
+  border: 1.6pt solid #1e2a3a;
+}
+
+table.diagram td {
+  width: 24pt;
+  height: 24pt;
+  text-align: center;
+  vertical-align: middle;
+  font-family: "DejaVu Sans", sans-serif;
+  font-size: 15pt;
+  padding: 0;
+}
+
+table.diagram td.light {
+  background: #fafaf6;
+}
+
+table.diagram td.dark {
+  background: #c4ccda;
+}
+
+.fen {
+  font-family: "Liberation Mono", "DejaVu Sans Mono", monospace;
+  font-size: 10.5pt;
+}
+
+.drill-row {
+  page-break-inside: avoid;
+  border: 0.9pt solid #5c6577;
+  border-radius: 4pt;
+  padding: 6pt 9pt;
+  margin-bottom: 9pt;
+}
+
+.prompt-slot {
+  display: inline-block;
+  border-bottom: 0.9pt solid #3a3f4a;
+  min-width: 1.8in;
+  height: 1.1em;
+  vertical-align: bottom;
+}
+
+/* ---- Footer note (unbranded: no names, no logos, no URLs) ---- */
+.footnote {
+  margin-top: 0.4em;
+  font-size: 9.5pt;
+  color: #6a7180;
+  font-style: italic;
+}
+
+/* ---- Scoresheet move blocks ---- */
+.moves-outer {
+  display: table;
+  width: 100%;
+}
+
+.moves-outer .moves-col {
+  display: table-cell;
+  vertical-align: top;
+}
+
+.moves-outer .moves-col.mid {
+  padding-right: 16pt;
+}
+
+table.moves {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table.moves th,
+table.moves td {
+  border: 0.8pt solid #3a3f4a;
+  padding: 2pt 4pt;
+  text-align: left;
+  vertical-align: middle;
+}
+
+table.moves th {
+  background: #e3e7ee;
+  font-size: 10.5pt;
+  text-transform: uppercase;
+}
+
+table.moves td.no {
+  width: 0.42in;
+  text-align: center;
+  font-size: 9.5pt;
+  color: #4a5163;
+}
+
+table.moves td.mv {
+  height: 8pt;
+}
+
+table.moves th,
+table.moves td {
+  padding: 1.5pt 4pt;
+}
